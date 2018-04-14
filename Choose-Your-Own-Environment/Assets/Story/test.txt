@@ -1,4 +1,5 @@
-testkey1>:value
-continuingvalue
-testkey2>:value2
-testkey1>:valuekey1val2
+leftcharacter>:I am the left
+character
+rightcharacter>:I am the right character
+choice>:choose left!
+choice>:choose right!

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class TextLoader : MonoBehaviour {
     public TextAsset SourceText;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
         dictionary = new Dictionary<string, List<string>>();
 
@@ -62,6 +62,7 @@ public class TextLoader : MonoBehaviour {
 
     private void AddValue(string key, string val)
     {
+        key = key.ToLower();
         if (dictionary.ContainsKey(key))
         {
             dictionary[key].Add(val);
@@ -75,7 +76,7 @@ public class TextLoader : MonoBehaviour {
     }
 
 
-    Dictionary<string, List<string>> dictionary;
+    public Dictionary<string, List<string>> dictionary;
 
     string delimiter = ">:";
 }
