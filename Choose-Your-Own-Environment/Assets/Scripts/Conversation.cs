@@ -8,16 +8,17 @@ public class Conversation : MonoBehaviour {
     public List<string> rightCharacter;
     private List<string> choices;
     public List<GameObject> consequence;
-
+    TextLoader textLoader;
+    GameObject myself;
 
     // Use this for initialization
-    void Awake () {
-        TextLoader textLoader = GetComponent<TextLoader>();
+    void Start () {
+        myself = gameObject;
+        textLoader = GetComponent<TextLoader>();
 
         if (textLoader.dictionary.ContainsKey(leftCharacterKey))
         {
             leftCharacter = textLoader.dictionary[leftCharacterKey];
-            Debug.Log("left count " + leftCharacter.Count);
         }
         else
         {
@@ -26,7 +27,6 @@ public class Conversation : MonoBehaviour {
         if (textLoader.dictionary.ContainsKey(rightCharacterKey))
         {
             rightCharacter = textLoader.dictionary[rightCharacterKey];
-            Debug.Log("right count " + rightCharacter.Count);
         }
         else
         {
@@ -45,12 +45,12 @@ public class Conversation : MonoBehaviour {
 
     public string GetNextLeftSpeach()
     {
+        textLoader = GetComponent<TextLoader>();
+
         string returnval = string.Empty;
-        Debug.Log("get speach left" + leftCharacter.Count);
         if (leftCurrentIndex < leftCharacter.Count)
         {
             returnval = leftCharacter[leftCurrentIndex];
-            Debug.Log("here");
             leftCurrentIndex++;
         }
         return returnval;

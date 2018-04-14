@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         convo = currentConversation.GetComponent<Conversation>();
-        //consequences = convo.GetConsequences();
+        consequences = convo.GetConsequences();
       
         Invoke("LeftCharacterSpeaks", speachDelay);
 	}
@@ -19,11 +19,16 @@ public class GameController : MonoBehaviour {
     private void LeftCharacterSpeaks()
     {
         leftSpeach = convo.GetNextLeftSpeach();
-        ui.LeftCharacterSpeaks(leftSpeach);
+        
         
         if (leftSpeach.Equals(string.Empty))
         {
             Invoke("RightCharacterSpeaks", speachDelay);
+        }
+        else
+        {
+            ui.LeftCharacterSpeaks(leftSpeach);
+            Invoke("LeftCharacterSpeaks", speachDelay);
         }
 
     }
@@ -31,11 +36,16 @@ public class GameController : MonoBehaviour {
     private void RightCharacterSpeaks()
     {
         rightSpeach = convo.GetNextRightSpeach();
-        ui.RightCharacterSpeaks(rightSpeach);
+        
        
         if (rightSpeach.Equals(string.Empty))
         {
             Invoke("DisplayChoices", speachDelay);
+        }
+        else
+        {
+            ui.RightCharacterSpeaks(rightSpeach);
+            Invoke("RightCharacterSpeaks", speachDelay);
         }
     }
 
@@ -48,7 +58,7 @@ public class GameController : MonoBehaviour {
     private string rightSpeach = string.Empty;
     private List<ChoiceConsequence> consequences;
 
-    public float speachDelay = 10.0f;
+    public float speachDelay = 3.0f;
 
     private const int titleIndex = 0;
     private const int prologueIndex = 1;
