@@ -1,2 +1,4 @@
-testdata from scripting
-line2
+testkey1>:value
+continuingvalue
+testkey2>:value2
+testkey1>:valuekey1val2
