@@ -32,9 +32,9 @@ public class TextLoader : MonoBehaviour {
                     if (currentKey != string.Empty)
                     {
                         AddValue(currentKey, currentVal);
-                        Debug.Log(currentKey);
-                        Debug.Log(currentVal);
-
+                        //Debug.Log(currentKey);
+                        //Debug.Log(currentVal);
+                        
                         currentKey = string.Empty;
                         currentVal = string.Empty;
                     }
@@ -53,8 +53,8 @@ public class TextLoader : MonoBehaviour {
 
             } while (line != null);
             AddValue(currentKey, currentVal);
-            Debug.Log(currentKey);
-            Debug.Log(currentVal);
+            //Debug.Log(currentKey);
+            //Debug.Log(currentVal);
         }
 
         
@@ -65,14 +65,17 @@ public class TextLoader : MonoBehaviour {
         key = key.ToLower();
         if (dictionary.ContainsKey(key))
         {
+            Debug.Log("key " + key + " val " + val);
             dictionary[key].Add(val);
         }
         else
         {
+            Debug.Log("key " + key + " val " + val);
             List<string> newList = new List<string>();
             newList.Add(val);
             dictionary.Add(key, newList);
         }
+        Debug.Log("dictionary count: " + dictionary[key].Count);
     }
 
 

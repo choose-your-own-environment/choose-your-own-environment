@@ -51,3 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6aabf09c09a15b4e9cd361152315bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentConversation: {fileID: 1573089921176940, guid: 81480ea462cc2b243b1fc7eb4d0a7fb2,
+    type: 2}
+  ui: {fileID: 0}
