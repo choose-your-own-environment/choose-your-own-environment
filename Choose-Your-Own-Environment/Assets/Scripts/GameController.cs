@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     private Conversation convo;
 	public PlayerStats gameProgress;
     public ScriptLine currentLine;
+	public bool advanceConversation = true;
     //public bool startConversation = false;
 
     // Use this for initialization
@@ -28,49 +29,79 @@ public class GameController : MonoBehaviour {
 
         if (SceneController.ActiveScene() == conversationIndex)
         {
+			if (advanceConversation) {
+				advanceConversation = false;
 
-            // call when in conversation
-            convo = currentConversation.GetComponent<Conversation>();
-            //consequences = convo.GetConsequences();
-
-            currentLine = convo.GetNextLine();
-            if (currentLine != null)
-            {
-                switch (currentLine.type)
-                {
-                    case ScriptLine.ScriptType.LeftCharacter:
-                        {
-                            LeftCharacterSpeaks();
-                            break;
-                        }
-                    case ScriptLine.ScriptType.RightCharacter:
-                        {
-                            RightCharacterSpeaks();
-                            break;
-                        }
-                }
-            }
-
-
+				DisplayNextLine ();
+			}
         }
     }
+
+	public void DisplayNextLine()
+	{
+		// call when in conversation
+		convo = currentConversation.GetComponent<Conversation>();
+		//consequences = convo.GetConsequences();
+
+		currentLine = convo.GetNextLine();
+		if (currentLine == null) {
+			DisplayChoices ();
+			return;
+		}
+
+		switch (currentLine.type) {
+		case ScriptLine.ScriptType.Narrator:
+			{
+				NarratorSpeaks ();
+				break;
+			}
+		case ScriptLine.ScriptType.LeftCharacter:
+			{
+				LeftCharacterSpeaks ();
+				break;
+			}
+		case ScriptLine.ScriptType.RightCharacter:
+			{
+				RightCharacterSpeaks ();
+				break;
+			}
+		case ScriptLine.ScriptType.Prompt:
+			{
+				DisplayPrompt();
+				break;
+			}
+		}
+
+
+	}
+
+	private void NarratorSpeaks()
+	{
+		ui.NarratorSpeaks (currentLine.value);
+		advanceConversation = true;
+	}
 
     private void LeftCharacterSpeaks()
     {
         ui.LeftCharacterSpeaks(currentLine.value);
+		advanceConversation = true;
     }
 
     private void RightCharacterSpeaks()
     {
-
         ui.RightCharacterSpeaks(currentLine.value);
-
+		advanceConversation = true;
     }
 
     private void DisplayChoices()
     {
-
+		ui.Choices (convo.choices);
     }
+
+	private void DisplayPrompt()
+	{
+		ui.Prompt (currentLine.value);
+	}
 
 	public void NextScene()
 	{

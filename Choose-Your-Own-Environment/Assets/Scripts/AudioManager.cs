@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startPlaying = true;
-//		songName = "choose-1850";
+		songName = "choose-1850";
 		
 		backgroundMusic = GetComponent<AudioSource> ();
 		backgroundMusic.loop = true;
@@ -52,7 +52,7 @@ public class AudioManager : MonoBehaviour {
 
 	public void ChangeMusic(string SongName) {
 
-		if (this.songName != null && this.songName.Equals(SongName) && backgroundMusic.isPlaying) {
+		if (this.songName.Equals(SongName) && backgroundMusic.isPlaying) {
 			return;
 		}
 
