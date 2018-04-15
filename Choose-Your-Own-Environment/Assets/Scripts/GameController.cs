@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		
         GameObject conversation = GameObject.FindGameObjectWithTag("Conversation");
         convo = conversation.GetComponentInChildren<Conversation>();
         currentConversation = convo.gameObject;
@@ -76,9 +77,14 @@ public class GameController : MonoBehaviour {
 				DisplayChoices ();
 				break;
 			}
-		case StoryLine.ScriptType.Background:
+		case StoryLine.ScriptType.Image:
 			{
-				ChangeBackground();
+				ChangeImage();
+				break;
+			}
+		case StoryLine.ScriptType.HideImage:
+			{
+				HideImage ();
 				break;
 			}
 		case StoryLine.ScriptType.Music:
@@ -132,9 +138,15 @@ public class GameController : MonoBehaviour {
 		ui.Prompt (currentLine.prompt);
 	}
 
-	private void ChangeBackground()
+	private void ChangeImage()
 	{
-		ui.Background (currentLine.background);
+		ui.ChangeImages (currentLine.image);
+		advanceConversation = true;
+	}
+
+	private void HideImage()
+	{
+		ui.HideImages (currentLine.hide);
 		advanceConversation = true;
 	}
 

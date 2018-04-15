@@ -5,6 +5,8 @@ stats:
   carbon: 1.10
   prosperity: 0.99
 dialog:
+ - hide:
+     background: true
  - music: choices-2
  - narrator: |
      You really messed it up this time.

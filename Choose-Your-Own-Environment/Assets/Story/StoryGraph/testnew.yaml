@@ -5,7 +5,8 @@ stats:
   carbon: 1.05
   prosperity: 1.2
 dialog:
- - background: 1800
+ - image:
+     background: 1800
  - music: choices-1
  - narrator: |
      August 1st, 1800. Another hazy morning in North Philadelphia.

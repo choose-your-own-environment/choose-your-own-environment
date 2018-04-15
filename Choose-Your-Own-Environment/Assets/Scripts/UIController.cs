@@ -10,13 +10,17 @@ public class UIController : MonoBehaviour {
 	public Image rightPortrait;
     public Text narratorText;
     public Button promptButton;
-	public Image backgroundImage;
-    public List<Button> choiceList;
+	public List<Button> choiceList;
 	public List<string> choiceValues;
+	public List<Image> namedImages;
+	private Dictionary<string, Image> _images;
 
 	// Use this for initialization
 	void Start () {
-		
+		_images = new Dictionary<string, Image> ();
+		foreach (Image img in namedImages) {
+			_images.Add (img.name, img);
+		}
 	}
 
 	public void Reset() {
@@ -56,9 +60,20 @@ public class UIController : MonoBehaviour {
 		promptButton.gameObject.SetActive(true);
 	}
 
-	public void Background(string image) {
-		backgroundImage.sprite = Resources.Load<Sprite> ("Background_images/" + image);
-		backgroundImage.gameObject.SetActive (true);
+	public void ChangeImages(Dictionary<string,string> imageSettings) {
+		foreach (KeyValuePair<string, string> entry in imageSettings) {
+			var img = _images [entry.Key] as Image;
+			img.sprite = Resources.Load<Sprite> ("Images/" + entry.Value);
+			img.gameObject.SetActive (true);
+		}
+	}
+
+	public void HideImages(Dictionary<string, bool> hideImages) {
+		foreach (KeyValuePair<string, bool> entry in hideImages) {
+			var obj = _images [entry.Key];
+			var img = obj.GetComponent<Image>();
+			img.gameObject.SetActive (!entry.Value);
+		}
 	}
 
 	public void Choices(Dictionary<string, string> choices) {

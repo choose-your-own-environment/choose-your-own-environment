@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 963960564}
   - component: {fileID: 963960563}
   m_Layer: 5
-  m_Name: BackgroundImage
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1296,7 +1296,7 @@ GameObject:
   - component: {fileID: 1376912717}
   - component: {fileID: 1376912716}
   m_Layer: 5
-  m_Name: LeftPortrait
+  m_Name: characterleft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,7 +1341,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 966aca03013697a42884c43d28b898d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afe20f104dde0c642a6dd6d4cec94679, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1606,7 +1606,6 @@ MonoBehaviour:
   rightPortrait: {fileID: 2051189346}
   narratorText: {fileID: 1940073452}
   promptButton: {fileID: 352080366}
-  backgroundImage: {fileID: 963960563}
   choiceList:
   - {fileID: 564259346}
   - {fileID: 1160638660}
@@ -1617,6 +1616,10 @@ MonoBehaviour:
   - 
   - 
   - 
+  namedImages:
+  - {fileID: 2051189346}
+  - {fileID: 1376912716}
+  - {fileID: 963960563}
 --- !u!1 &1994977912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,7 +1705,7 @@ GameObject:
   - component: {fileID: 2051189347}
   - component: {fileID: 2051189346}
   m_Layer: 5
-  m_Name: RightPortrait
+  m_Name: characterright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1745,7 +1748,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 966aca03013697a42884c43d28b898d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f8f93d95a3596940acfd5d83a0c539d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
