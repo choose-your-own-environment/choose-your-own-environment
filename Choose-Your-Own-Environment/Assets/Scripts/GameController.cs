@@ -1,19 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-    public GameObject currentConversation;
+	public GameObject currentConversation;
     public UIController ui;
     private Conversation convo;
+	public PlayerStats gameProgress;
+	public bool startConversation = false;
 
 	// Use this for initialization
 	void Start () {
-        convo = currentConversation.GetComponent<Conversation>();
-        consequences = convo.GetConsequences();
-      
-        Invoke("LeftCharacterSpeaks", speachDelay);
+		DontDestroyOnLoad (gameObject);
+
+		SceneController.LoadNextLevel ();
+	}
+
+	void Update() {
+
+		if (startConversation) {
+
+			startConversation = false;
+
+			// call when in conversation
+			convo = currentConversation.GetComponent<Conversation> ();
+			consequences = convo.GetConsequences ();
+
+			Invoke ("LeftCharacterSpeaks", speachDelay);
+		}
 	}
 
     private void LeftCharacterSpeaks()
@@ -60,9 +76,9 @@ public class GameController : MonoBehaviour {
 
     public float speachDelay = 3.0f;
 
-    private const int titleIndex = 0;
-    private const int prologueIndex = 1;
-    private const int conversationIndex = 2;
-    private const int epilogueIndex = 3;
-    private const int endIndex = 4;
+	private const int titleIndex = 1;
+    private const int prologueIndex = 2;
+    private const int conversationIndex = 3;
+    private const int epilogueIndex = 4;
+    private const int endIndex = 5;
 }

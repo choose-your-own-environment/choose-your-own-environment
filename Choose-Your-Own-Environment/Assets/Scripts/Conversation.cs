@@ -40,7 +40,6 @@ public class Conversation : MonoBehaviour {
         {
             Debug.LogError("Choices are missing");
         }
-
     }
 
     public string GetNextLeftSpeach()
