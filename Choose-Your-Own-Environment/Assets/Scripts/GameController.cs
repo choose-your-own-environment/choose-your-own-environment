@@ -48,7 +48,19 @@ public class GameController : MonoBehaviour {
 		currentLine = convo.GetNextLine();
 
 		if (currentLine == null) {
+			// is this an error?
+			advanceConversation = true;
 			return;
+		}
+
+		if (currentLine.conditions != null) {
+			GameController game = FindObjectOfType<GameController> ();
+			foreach (StatCondition condition in currentLine.conditions) {
+				if (!condition.Test (game.gameProgress)) {
+					advanceConversation = true;
+					return;
+				}
+			}
 		}
 
 		switch (currentLine.GetType()) {
@@ -67,15 +79,10 @@ public class GameController : MonoBehaviour {
 				RightCharacterSpeaks ();
 				break;
 			}
-		case StoryLine.ScriptType.Prompt:
-			{
-				DisplayPrompt();
-				break;
-			}
 		case StoryLine.ScriptType.Choice:
 			{
 				DisplayChoices ();
-				break;
+				return;
 			}
 		case StoryLine.ScriptType.Image:
 			{
@@ -112,6 +119,7 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
+		DisplayPrompt();
 
 	}
 
@@ -140,7 +148,10 @@ public class GameController : MonoBehaviour {
 
 	private void DisplayPrompt()
 	{
-		ui.Prompt (currentLine.prompt);
+		if (currentLine.prompt != null && currentLine.prompt.Length > 0) {
+			ui.Prompt (currentLine.prompt);
+			advanceConversation = false;
+		}
 	}
 
 	private void ChangeImage()

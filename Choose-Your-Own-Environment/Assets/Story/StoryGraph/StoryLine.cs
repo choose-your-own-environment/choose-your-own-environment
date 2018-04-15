@@ -9,7 +9,6 @@ public class StoryLine {
 		Narrator,
 		LeftCharacter,
 		RightCharacter,
-		Prompt,
 		Choice,
 		Image,
 		HideImage,
@@ -44,9 +43,7 @@ public class StoryLine {
 	 * goto node id
 	 */
 	public string next { get; set; }
-	// TODO list of conditionals
-	// auto-advance to specific scene (goto)
-	// generic image-set
+	public List<StatCondition> conditions { get; set; }
 
 	public ScriptType GetType() {
 		if (leftcharacter != null) {
@@ -59,10 +56,6 @@ public class StoryLine {
 
 		if (narrator != null) {
 			return ScriptType.Narrator;
-		}
-
-		if (prompt != null) {
-			return ScriptType.Prompt;
 		}
 
 		if (choices != null) {

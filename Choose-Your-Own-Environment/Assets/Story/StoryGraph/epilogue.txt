@@ -1,6 +1,10 @@
 ﻿---
 id: end
 dialog:
+ - conditions:
+   - carbon: < 600
+   - narrator: Congradulations! Not everyone has died.
+   - prompt: "Uh, thanks I guess?"
  - narrator: |
      Well, that's the end!
  - prompt: Try again.
