@@ -23,4 +23,9 @@ public static class SceneController {
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public static int ActiveScene()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
 }
