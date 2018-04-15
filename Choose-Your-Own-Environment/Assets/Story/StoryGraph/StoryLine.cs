@@ -15,6 +15,7 @@ public class StoryLine {
 		HideImage,
 		Music,
 		Sound,
+		Next,
 		None
 	};
 
@@ -39,6 +40,10 @@ public class StoryLine {
 	public Dictionary<string, bool> hide { get; set; }
 	public string music { get; set; }
 	public string sound { get; set; }
+	/**
+	 * goto node id
+	 */
+	public string next { get; set; }
 	// TODO list of conditionals
 	// auto-advance to specific scene (goto)
 	// generic image-set
@@ -78,6 +83,10 @@ public class StoryLine {
 
 		if (sound != null) {
 			return ScriptType.Sound;
+		}
+
+		if (next != null) {
+			return ScriptType.Next;
 		}
 
 		return ScriptType.None;

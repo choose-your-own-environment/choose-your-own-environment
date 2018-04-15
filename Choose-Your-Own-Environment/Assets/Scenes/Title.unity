@@ -303,7 +303,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "From the Minds of:\n\n      Justin Camelia\n      Kerry Chang\n      Karl
-    Pauls\n      Jeff Turner\n      Darsh Lin\n      David Zhang"
+    Alex Pauls\n      Jeff Turner\n      Darsh Lin\n      David Zhang"
 --- !u!222 &1348975877
 CanvasRenderer:
   m_ObjectHideFlags: 0

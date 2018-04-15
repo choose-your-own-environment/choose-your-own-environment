@@ -1,0 +1,7 @@
+﻿---
+id: end
+dialog:
+ - narrator: |
+     Well, that's the end!
+ - prompt: Try again.
+ - next: 1

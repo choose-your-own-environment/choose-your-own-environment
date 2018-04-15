@@ -99,6 +99,11 @@ public class GameController : MonoBehaviour {
 				advanceConversation = true;
 				break;
 			}
+		case StoryLine.ScriptType.Next:
+			{
+				NextConversation (currentLine.next);
+				break;
+			}
 		case StoryLine.ScriptType.None:
 			{
 				Debug.Log ("empty node");
