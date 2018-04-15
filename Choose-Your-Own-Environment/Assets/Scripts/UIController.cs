@@ -18,6 +18,9 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void Reset() {
+		if (leftPortrait == null) {
+			return;
+		}
 		leftPortrait.gameObject.SetActive(false);
 		rightPortrait.gameObject.SetActive(false);
 		promptButton.gameObject.SetActive(false);
@@ -68,6 +71,6 @@ public class UIController : MonoBehaviour {
 	public void OnChoice(int i) {
 		Debug.Log ("click choice=" + i);
 		Reset ();
-		FindObjectOfType<GameController> ().advanceConversation = true;
+		FindObjectOfType<GameController> ().NextConversation (i);
 	}
 }
