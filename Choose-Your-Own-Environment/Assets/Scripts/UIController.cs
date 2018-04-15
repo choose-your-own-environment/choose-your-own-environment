@@ -18,24 +18,27 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void Reset() {
-		leftPortrait.enabled = false;
-		rightPortrait.enabled = false;
-		promptButton.enabled = false;
+		leftPortrait.gameObject.SetActive(false);
+		rightPortrait.gameObject.SetActive(false);
+		promptButton.gameObject.SetActive(false);
 		foreach (Button button in choiceList) {
-			button.enabled = false;
+			button.gameObject.SetActive(false);
 		}
+		leftCharacterText.text = "";
+		rightCharacterText.text = "";
+		narratorText.text = "";
 	}
 	
 	public void LeftCharacterSpeaks(string speach)
     {
         leftCharacterText.text = speach;
-		leftPortrait.enabled = true;
+		leftPortrait.gameObject.SetActive(true);
     }
 
     public void RightCharacterSpeaks(string speach)
     {
         rightCharacterText.text = speach;
-		leftPortrait.enabled = true;
+		leftPortrait.gameObject.SetActive(true);
     }
 
     public void NarratorSpeaks(string speach)
@@ -44,22 +47,23 @@ public class UIController : MonoBehaviour {
     }
 
 	public void Prompt(string text) {
-		promptButton.GetComponent<Text> ().text = text;
+		promptButton.GetComponentInChildren<Text> ().text = text;
+		promptButton.gameObject.SetActive(true);
 		promptButton.enabled = true;
 	}
 
 	public void Choices(List<string> choices) {
 		for (int i = 0; i < choices.Count; i++) {
-			choiceList [i].GetComponent<Text> ().text = choices [i];
-			choiceList [i].enabled = true;
+			choiceList [i].GetComponentInChildren<Text> ().text = choices [i];
+			choiceList [i].gameObject.SetActive(true);
 		}
 	}
 
 	public void OnPromptClick() {
-		// TODO advance to next item
+		FindObjectOfType<GameController> ().advanceConversation = true;
 	}
 
 	public void OnChoice(int i) {
-		// TODO advance to next item & apply consequence
+		FindObjectOfType<GameController> ().advanceConversation = true;
 	}
 }

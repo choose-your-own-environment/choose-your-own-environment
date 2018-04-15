@@ -7,7 +7,7 @@ public class Conversation : MonoBehaviour {
     //public List<string> leftCharacter;
     //public List<string> rightCharacter;
     public List<ScriptLine> script;
-    private List<string> choices;
+    public List<string> choices;
     public List<GameObject> consequence;
     //TextLoader textLoader;
     ConversationLoader conversationLoader;

@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 352080364}
   - component: {fileID: 352080366}
   m_Layer: 5
-  m_Name: PromptButtom
+  m_Name: PromptButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 352080362}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -789,6 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b27bcbbb047d340814a7ac9c87d47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  choices: []
   consequence:
   - {fileID: 0}
 --- !u!1 &969455735
