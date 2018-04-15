@@ -8,7 +8,7 @@ dialog:
  - hide:
      leftcharacter: true
      rightcharacter: true
- - music: choices-1
+ - music: choices-1800
  - sound: timewarp
  - narrator: |
      August 1st, 1800. Another hazy morning in North Philadelphia.
@@ -20,6 +20,7 @@ dialog:
      You feel a ginger tap on your shoulder.
  - prompt: Turn around...?
  - leftcharacter: “Hello. I’m Professor Montgomery. I’d like to buy you a drink, as way of congratulations on your new fortune.”
+ - prompt: "Oh, hi?"
  - narrator: She gestures to a gilded coach across the street.
  - choices:
      1a: ”No thanks!”
@@ -50,10 +51,10 @@ id: 2a
 dialog:
  - narrator: you did a bad thing, and the market moved faster than you anyways
  - prompt: ok
- - next: 31
+ - next: 21
 ---
 id: 2b
 dialog:
  - narrator: you did a not as bad thing, and people are happy. Plus you made money in the long run.
  - prompt: yay
- - next: 31
+ - next: 21

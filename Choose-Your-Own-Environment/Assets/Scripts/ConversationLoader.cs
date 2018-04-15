@@ -53,6 +53,10 @@ public class ConversationLoader : MonoBehaviour {
 
 	private void ParseYaml(TextAsset text)
 	{
+		if (text == null) {
+			return;
+		}
+
 		GameController gameController = FindObjectOfType<GameController> ();
 
 		List<StoryNode> nodes = new List<StoryNode>();

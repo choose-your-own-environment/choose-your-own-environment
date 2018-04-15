@@ -1,0 +1,17 @@
+---
+id: 21
+todo: images and stuff
+dialog:
+ - image:
+     background: 1950
+ - music: choices-1950
+ - narrator: One man stands alone on the train platform after the crowd has dissipated. He bears a striking resemblance to Moneybags, and is carrying a briefcase.
+ - prompt: ~ next ~
+ - rightcharacter: "Excuse me! I believe I mixed up our bags - this briefcase must be yours."
+ - prompt: "I didn't have a briefcase..."
+ - rightcharacter: "Curious. It seems to have your name on it. I'll just leave it here for you."
+ - prompt: (?!?!!?)
+ - narrator: The old man sets the briefcase down by your bench, and exits the platform. Another train is on the way, judging by a distant whistle.
+ - choices:
+     22a: Pick up the briefcase.
+     22b: Ignore the briefcase.
