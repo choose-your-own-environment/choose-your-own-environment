@@ -70,7 +70,13 @@ public class GameController : MonoBehaviour {
 
     }
 
-    private string leftSpeach = string.Empty;
+	public void NextScene()
+	{
+		Debug.Log ("Loading Next Scene");
+		SceneController.LoadNextLevel ();
+	}
+
+	private string leftSpeach = string.Empty;
     private string rightSpeach = string.Empty;
     private List<ChoiceConsequence> consequences;
 

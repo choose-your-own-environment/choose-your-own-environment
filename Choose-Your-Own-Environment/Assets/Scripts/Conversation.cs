@@ -11,6 +11,9 @@ public class Conversation : MonoBehaviour {
     TextLoader textLoader;
     GameObject myself;
 
+	private AudioManager audioManager;
+	private GameController gameController;
+
     // Use this for initialization
     void Start () {
         myself = gameObject;
@@ -40,6 +43,21 @@ public class Conversation : MonoBehaviour {
         {
             Debug.LogError("Choices are missing");
         }
+
+		if (textLoader.dictionary.ContainsKey (musicKey))
+		{
+			Debug.Log("found music! song="+textLoader.dictionary [musicKey][0]);
+			
+			audioManager = FindObjectOfType<AudioManager> ();
+			if (audioManager != null) {
+				audioManager.ChangeMusic (textLoader.dictionary [musicKey] [0]);
+			}
+		}
+
+		gameController = FindObjectOfType<GameController> ();
+		if (gameController != null) {
+			gameController.startConversation = true;
+		}
     }
 
     public string GetNextLeftSpeach()
@@ -98,4 +116,5 @@ public class Conversation : MonoBehaviour {
     private const string leftCharacterKey = "leftcharacter";
     private const string rightCharacterKey = "rightcharacter";
     private const string choicesKey = "choice";
+	private const string musicKey = "music";
 }

@@ -1,4 +1,12 @@
-leftcharacter>:I am the left
-character
-rightcharacter>:I am the right character
-choice>:choose left!
+narrator>:August 1st, 1800.Another hazy morning in North Philadelphia.
+narrator>:There's a rap on your front door.
+narrator>:A courier hands you a large envelope, then speeds off without a word.
+narrator>:It’s from your uncle. There’s two pieces of mail inside - a letter, and a deed.
+narrator>:“To my only relative: Please use this wisely. I don’t have anyone interested in the property right now, but it’s worth at least $200 an acre. It’s mostly forested too, so it’s even more valuable with timber accounted for. Make yourself a bundle, or take a long walk through the woods - it’s up to you.”
+narrator>:The other piece of mail is a deed for… 5,000 acres! You do the math, and feel your heart skip a beat. You’re a millionaire!
+narrator>:You feel a ginger tap on your shoulder.
+prompt>:Turn around...?
+leftcharacter>:“Hello. I’m Professor Montgomery. I’d like to buy you a drink, as way of congratulations on your new fortune.”
+narrator>:She gestures to a gilded coach across the street.
+choice>:”No thanks!”
+choice>:”Don't mind if I do!”
