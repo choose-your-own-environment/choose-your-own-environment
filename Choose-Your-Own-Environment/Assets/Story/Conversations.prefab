@@ -98,4 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: []
   choice: []
-  SourceText: {fileID: 4900000, guid: 687082e991dca43a2a647a28a370fa2a, type: 3}
+  SourceText:
+  - {fileID: 4900000, guid: 2e8e00694f4b44412b37d5676643f4f0, type: 3}
+  - {fileID: 4900000, guid: 687082e991dca43a2a647a28a370fa2a, type: 3}

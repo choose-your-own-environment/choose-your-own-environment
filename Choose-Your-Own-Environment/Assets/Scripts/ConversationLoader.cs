@@ -12,7 +12,6 @@ using YamlDotNet.Serialization.NamingConventions;
 public class ConversationLoader : MonoBehaviour {
     public List<string> music;
     public List<string> choice;
-	public Dictionary<string, StoryNode> script;
 
     private const string delimiter = ">:";
     private const string musicKeyName = "music";
@@ -22,18 +21,21 @@ public class ConversationLoader : MonoBehaviour {
     private const string promptKeyName = "prompt";
     private const string choiceKeyName = "choice";
 
-    
+    public List<TextAsset> SourceText;
+	[System.NonSerialized]
+	public Dictionary<string, StoryNode> script;
 
-    public TextAsset SourceText;
-    // Use this for initialization
+	// Use this for initialization
     void Awake()
     {
-		script = new Dictionary<string, StoryNode> ();
+		script = FindObjectOfType<GameController> ().script;
+		
         choice = new List<string>();
         music = new List<string>();
         
-		ParseYaml (SourceText);
-//        ParseText(SourceText);
+		foreach (TextAsset text in SourceText) {
+			ParseYaml (text);
+		}
     }
 
     private static string NormalizeToAscii(byte[] bytes)
@@ -51,6 +53,8 @@ public class ConversationLoader : MonoBehaviour {
 
 	private void ParseYaml(TextAsset text)
 	{
+		GameController gameController = FindObjectOfType<GameController> ();
+
 		List<StoryNode> nodes = new List<StoryNode>();
 
 		var input = new StringReader(NormalizeToAscii (text.bytes));
@@ -70,7 +74,7 @@ public class ConversationLoader : MonoBehaviour {
 			// Deserialize the document
 			var doc = deserializer.Deserialize<StoryNode>(parser);
 
-			script.Add (doc.id, doc);
+			gameController.script.Add (doc.id, doc);
 		}
 	}
 }

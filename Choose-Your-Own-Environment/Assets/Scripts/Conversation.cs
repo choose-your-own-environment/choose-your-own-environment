@@ -6,18 +6,20 @@ using UnityEngine;
 public class Conversation : MonoBehaviour {
     //public List<string> leftCharacter;
     //public List<string> rightCharacter;
-	public Dictionary<string, StoryNode> script;
 	public string nodeId;
     public List<string> choices;
     public List<GameObject> consequence;
     //TextLoader textLoader;
     ConversationLoader conversationLoader;
+	[System.NonSerialized]
+	public Dictionary<string, StoryNode> script;
 
 	private MusicManager audioManager;
 	private GameController gameController;
 
     private int currentIndex = 0;
 	private StoryNode currentNode;
+
 
     // Use this for initialization
     void Start () {

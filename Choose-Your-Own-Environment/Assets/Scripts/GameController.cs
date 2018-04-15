@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
+	public Dictionary<string, StoryNode> script = new Dictionary<string, StoryNode>();
 	public GameObject currentConversation;
     public UIController ui;
     private Conversation convo;
