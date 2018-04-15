@@ -60,10 +60,14 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void OnPromptClick() {
+		Debug.Log ("click prompt");
+		Reset ();
 		FindObjectOfType<GameController> ().advanceConversation = true;
 	}
 
 	public void OnChoice(int i) {
+		Debug.Log ("click choice=" + i);
+		Reset ();
 		FindObjectOfType<GameController> ().advanceConversation = true;
 	}
 }
