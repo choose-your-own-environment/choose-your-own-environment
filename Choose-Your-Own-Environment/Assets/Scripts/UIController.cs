@@ -23,6 +23,20 @@ public class UIController : MonoBehaviour {
 		}
 	}
 
+	void Update() {
+		if (Input.GetKeyDown ("1")) {
+			choiceList [0].onClick.Invoke ();
+		} else if (Input.GetKeyDown ("2")) {
+			choiceList [1].onClick.Invoke ();
+		} else if (Input.GetKeyDown ("3")) {
+			choiceList [2].onClick.Invoke ();
+		} else if (Input.GetKeyDown ("4")) {
+			choiceList [3].onClick.Invoke ();
+		} else if (Input.GetKeyDown ("enter") || Input.GetKeyDown ("space")) {
+			promptButton.onClick.Invoke ();
+		}
+	}
+
 	public void Reset() {
 		if (leftPortrait == null) {
 			return;
@@ -77,11 +91,13 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void Choices(Dictionary<string, string> choices) {
+		List<string> keys = new List<string>(choices.Keys);
+		keys.Sort ((a, b) => string.Compare(a, b));
 		int i = 0;
-		foreach (KeyValuePair<string, string> entry in choices) {
-			choiceList [i].GetComponentInChildren<Text> ().text = entry.Value;
+		foreach (string key in keys) {
+			choiceList [i].GetComponentInChildren<Text> ().text = "(" + (i + 1) + ") " + choices [key];
 			choiceList [i].gameObject.SetActive (true);
-			choiceValues [i] = entry.Key;
+			choiceValues [i] = key;
 			i++;
 		}
 	}
