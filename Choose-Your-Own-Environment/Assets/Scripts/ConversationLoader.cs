@@ -78,7 +78,9 @@ public class ConversationLoader : MonoBehaviour {
 			// Deserialize the document
 			var doc = deserializer.Deserialize<StoryNode>(parser);
 
-			gameController.script.Add (doc.id, doc);
+			if (doc != null) {
+				gameController.script.Add (doc.id, doc);
+			}
 		}
 
 		Debug.Log ("finished a parse");

@@ -68,3 +68,4 @@ dialog:
  - narrator: you did a not as bad thing, and people are happy. Plus you made money in the long run.
  - prompt: yay
  - next: 21
+---

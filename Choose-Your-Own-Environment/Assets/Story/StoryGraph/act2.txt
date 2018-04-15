@@ -34,13 +34,17 @@ dialog:
  - prompt: Board the train.
  - narrator: As you cross the threshold of the train car entrance, there is another obnoxious flash of light. You fall down to your knees.
  - prompt: ~ next ~
+<<<<<<< HEAD
  - next: 99
+=======
+ - next: 5start
+>>>>>>> cc454a0531ebb7a39cafdef68a58c1fee4ec3fc4
 ---
 id: 23a
 dialog:
  - narrator: Fifty years of being a businessman is in your blood now, and you smell a profitable deal. As you finish scribbling your signature, you can swear you hear the sound of the professor's watch in your ear... and then, another flash of light blinds you.
  - prompt: ~ next ~
- - next: 99
+ - next: 5start
 ---
 id: 23b
 dialog:
@@ -48,12 +52,11 @@ dialog:
      Montgomery's words ring in your ears - you decide that nothing good can come of this. Reaching in your pocket, you feel a slip of paper. You pull out a ticket with your name on it. Soon, the next train has arrived.
      As you cross the threshold of the train car entrance, there is another obnoxious flash of light. You fall down to your knees.
  - prompt: ~ next ~
- - next: 99
+ - next: 5start
 ---
 id: 99
 dialog:
  - narrator: Well, that's the end!
  - prompt: Try again.
  - next: 1
----
 ---
