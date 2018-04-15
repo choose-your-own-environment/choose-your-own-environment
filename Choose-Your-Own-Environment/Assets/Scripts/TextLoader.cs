@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +13,24 @@ public class TextLoader : MonoBehaviour {
 
         dictionary = new Dictionary<string, List<string>>();
 
-        ParseText(SourceText.text);
+		var text = NormalizeDiacriticalCharacters (SourceText.bytes);
+        ParseText(text);
 	}
 
-    private void ParseText(string input)
+	private static string NormalizeDiacriticalCharacters(byte[] bytes)
+	{
+		string value = System.Text.Encoding.Default.GetString(bytes);
+		if (value == null)
+		{
+			throw new ArgumentNullException("value");
+		}
+
+		var normalised = value.Normalize(NormalizationForm.FormD).ToCharArray();
+
+		return new string(Array.FindAll(normalised, c => (int)c <= 127));
+	}
+
+	private void ParseText(string input)
     {
         using (StringReader sr = new StringReader(input))
         {
