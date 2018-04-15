@@ -103,6 +103,11 @@ public class GameController : MonoBehaviour {
 		ui.Prompt (currentLine.value);
 	}
 
+	public void NextConversation(int choice)
+	{
+		// TODO fire consequence and load next text
+	}
+
 	public void NextScene()
 	{
 		Debug.Log ("Loading Next Scene");
