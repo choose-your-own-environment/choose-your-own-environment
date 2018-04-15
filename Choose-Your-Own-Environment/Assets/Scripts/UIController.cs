@@ -24,15 +24,15 @@ public class UIController : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKeyDown ("1")) {
+		if (choiceList[0].gameObject.activeSelf && Input.GetKeyDown ("1")) {
 			choiceList [0].onClick.Invoke ();
-		} else if (Input.GetKeyDown ("2")) {
+		} else if (choiceList[1].gameObject.activeSelf && Input.GetKeyDown ("2")) {
 			choiceList [1].onClick.Invoke ();
-		} else if (Input.GetKeyDown ("3")) {
+		} else if (choiceList[2].gameObject.activeSelf && Input.GetKeyDown ("3")) {
 			choiceList [2].onClick.Invoke ();
-		} else if (Input.GetKeyDown ("4")) {
+		} else if (choiceList[3].gameObject.activeSelf && Input.GetKeyDown ("4")) {
 			choiceList [3].onClick.Invoke ();
-		} else if (Input.GetKeyDown ("enter") || Input.GetKeyDown ("space")) {
+		} else if (promptButton.gameObject.activeSelf && (Input.GetKeyDown ("enter") || Input.GetKeyDown ("space"))) {
 			promptButton.onClick.Invoke ();
 		}
 	}
@@ -123,7 +123,7 @@ public class UIController : MonoBehaviour {
     }
 
 	public void OnPromptClick() {
-		Debug.Log ("click prompt");
+  		Debug.Log ("click prompt");
 		Reset ();
 		FindObjectOfType<GameController> ().advanceConversation = true;
 	}
