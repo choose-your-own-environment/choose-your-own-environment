@@ -102,6 +102,26 @@ public class UIController : MonoBehaviour {
 		}
 	}
 
+    public void UpdateDisplayWealth(double wealth)
+    {
+
+    }
+
+    public void UpdateDisplayFutureCarbon(int carbon)
+    {
+
+    }
+
+    public void UpdateDisplayPopulation(double population)
+    {
+
+    }
+
+    public void UpdateDisplayProsperity(double prosperity)
+    {
+
+    }
+
 	public void OnPromptClick() {
 		Debug.Log ("click prompt");
 		Reset ();
