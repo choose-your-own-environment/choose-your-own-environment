@@ -28,6 +28,9 @@ dialog:
 ---
 id: 1a
 dialog:
+ - image:
+     background: 1800
+     leftcharacter: ProfessorMale-Sad
  - leftcharacter: "Too bad"
  - prompt: (...)
  - next: 2
@@ -40,6 +43,9 @@ dialog:
 ---
 id: 2
 dialog:
+ - image:
+     background: 1800
+     leftcharacter: ProfessorMale
  - leftcharacter: You want my stuff
  - prompt: hmm
  - rightcharacter: No you want mine
