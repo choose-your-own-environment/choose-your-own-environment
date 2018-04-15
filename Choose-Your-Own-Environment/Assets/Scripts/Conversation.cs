@@ -49,11 +49,15 @@ public class Conversation : MonoBehaviour {
 			Debug.Log("found music! song="+textLoader.dictionary [musicKey][0]);
 			
 			audioManager = FindObjectOfType<AudioManager> ();
-			audioManager.ChangeMusic (textLoader.dictionary [musicKey][0]);
+			if (audioManager != null) {
+				audioManager.ChangeMusic (textLoader.dictionary [musicKey] [0]);
+			}
 		}
 
 		gameController = FindObjectOfType<GameController> ();
-		gameController.startConversation = true;
+		if (gameController != null) {
+			gameController.startConversation = true;
+		}
     }
 
     public string GetNextLeftSpeach()
