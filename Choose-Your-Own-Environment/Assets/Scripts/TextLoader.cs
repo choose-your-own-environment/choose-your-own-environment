@@ -63,6 +63,7 @@ public class TextLoader : MonoBehaviour {
     private void AddValue(string key, string val)
     {
         key = key.ToLower();
+		val = val.Trim ();
         if (dictionary.ContainsKey(key))
         {
             Debug.Log("key " + key + " val " + val);
