@@ -1,0 +1,31 @@
+---
+id: 5start
+dialog:
+ - image:
+     background: 2000
+ - music: choices-2000
+ - narrator: Welcome to the year 2000. It's time to make some more complicated decisions.
+ - prompt: MORE complicated?
+ - rightcharacter: "Natural Gas is more viable than ever now thanks to horizontal drilling. Strike while the iron's hot!"
+ - prompt: "Some do still use charcoal."
+ - leftcharacter: "Now is actually a great time to move away from fossil fuels, and instead invest in increased battery storage for renewable energies to combat intermittency."
+ - prompt: "If not millions will be flooded."
+ - choices:
+     5gasend: Invest in Natural Gas
+     5storend: Invest in Storage for Renewable Energies!
+---
+id: 5gasend
+dialog:
+ - narrator: You invested in Natural Gas! Yay money! Boo climate change!
+ - prompt: Press enter to feel shame.
+ - next: 99
+---
+id: 5storend
+dialog:
+ - narrator: |
+     You invested in energy storage for renewables! You have taken the long view, and the world is a safer and more inhabitable place for it.
+     In the short term, you've taken a massive financial hit.
+     In the long term, your investment will be returned in full, and then some.
+ - prompt: Press space to feel confident.
+ - next: 99
+---
