@@ -38,6 +38,11 @@ public class GameController : MonoBehaviour {
             {
                 switch (currentLine.type)
                 {
+					case ScriptLine.ScriptType.Narrator:
+						{
+							NarratorSpeaks ();
+							break;
+						}
                     case ScriptLine.ScriptType.LeftCharacter:
                         {
                             LeftCharacterSpeaks();
@@ -54,6 +59,11 @@ public class GameController : MonoBehaviour {
 
         }
     }
+
+	private void NarratorSpeaks()
+	{
+		ui.NarratorSpeaks (currentLine.value);
+	}
 
     private void LeftCharacterSpeaks()
     {

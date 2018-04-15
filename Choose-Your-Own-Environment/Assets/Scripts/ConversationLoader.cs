@@ -42,9 +42,9 @@ public class ConversationLoader : MonoBehaviour {
             throw new ArgumentNullException("value");
         }
 
-        var normalised = value.Normalize(NormalizationForm.FormD).ToCharArray();
+		// TODO character replacements
 
-        return new string(Array.FindAll(normalised, c => (int)c <= 127));
+		return value;
     }
 
     private void ParseText(TextAsset text)
