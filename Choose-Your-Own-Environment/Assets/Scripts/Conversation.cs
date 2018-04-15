@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(TextLoader))]
+//[RequireComponent(typeof(TextLoader))]
 public class Conversation : MonoBehaviour {
-    public List<string> leftCharacter;
-    public List<string> rightCharacter;
+    //public List<string> leftCharacter;
+    //public List<string> rightCharacter;
+    public List<ScriptLine> script;
     private List<string> choices;
     public List<GameObject> consequence;
-    TextLoader textLoader;
-    GameObject myself;
+    //TextLoader textLoader;
+    ConversationLoader conversationLoader;
 
 	private AudioManager audioManager;
 	private GameController gameController;
 
+    private int currentIndex = 0;
+
     // Use this for initialization
     void Start () {
-        myself = gameObject;
-        textLoader = GetComponent<TextLoader>();
+        
+        //textLoader = GetComponent<TextLoader>();
+        conversationLoader = GetComponent<ConversationLoader>();
 
+        /*
         if (textLoader.dictionary.ContainsKey(leftCharacterKey))
         {
             leftCharacter = textLoader.dictionary[leftCharacterKey];
@@ -43,23 +48,41 @@ public class Conversation : MonoBehaviour {
         {
             Debug.LogError("Choices are missing");
         }
+        */
 
-		if (textLoader.dictionary.ContainsKey (musicKey))
+        choices = conversationLoader.choice;
+        script = conversationLoader.script;
+
+        if (conversationLoader.music.Count > 0)
 		{
-			Debug.Log("found music! song="+textLoader.dictionary [musicKey][0]);
+			Debug.Log("found music! song="+ conversationLoader.music[0]);
 			
 			audioManager = FindObjectOfType<AudioManager> ();
 			if (audioManager != null) {
-				audioManager.ChangeMusic (textLoader.dictionary [musicKey] [0]);
+				audioManager.ChangeMusic (conversationLoader.music[0]);
 			}
 		}
 
+        /*
 		gameController = FindObjectOfType<GameController> ();
 		if (gameController != null) {
 			gameController.startConversation = true;
 		}
+        */
     }
 
+    public ScriptLine GetNextLine()
+    {
+        ScriptLine returnval = null;
+        if (currentIndex < script.Count)
+        {
+            returnval = script[currentIndex];
+            currentIndex++;
+        }
+        return returnval;
+    }
+
+    /*
     public string GetNextLeftSpeach()
     {
         textLoader = GetComponent<TextLoader>();
@@ -83,11 +106,11 @@ public class Conversation : MonoBehaviour {
         }
         return returnval;
     }
+    */
 
     public void ResetConversation()
     {
-        leftCurrentIndex = 0;
-        rightCurrentIndex = 0;
+        currentIndex = 0;
     }
 
 

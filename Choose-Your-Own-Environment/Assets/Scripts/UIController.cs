@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
     public Text leftCharacterText;
     public Text rightCharacterText;
+    public Text narratorText;
+    public Button promptButton;
     public List<Button> choiceList;
 
 
@@ -22,5 +24,10 @@ public class UIController : MonoBehaviour {
     public void RightCharacterSpeaks(string speach)
     {
         rightCharacterText.text = speach;
+    }
+
+    public void NarratorSpeaks(string speach)
+    {
+        narratorText.text = speach;
     }
 }

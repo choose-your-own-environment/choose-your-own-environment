@@ -9,60 +9,62 @@ public class GameController : MonoBehaviour {
     public UIController ui;
     private Conversation convo;
 	public PlayerStats gameProgress;
-	public bool startConversation = false;
+    public ScriptLine currentLine;
+    //public bool startConversation = false;
 
-	// Use this for initialization
-	void Start () {
-		DontDestroyOnLoad (gameObject);
+    // Use this for initialization
+    void Start () {
+        GameObject conversation = GameObject.FindGameObjectWithTag("Conversation");
+        convo = conversation.GetComponentInChildren<Conversation>();
+        currentConversation = convo.gameObject;
 
-		SceneController.LoadNextLevel ();
-	}
+        if (SceneController.ActiveScene() == 0)
+        {
+            SceneController.LoadNextLevel();
+        }
+    }
 
 	void Update() {
 
-		if (startConversation) {
+        if (SceneController.ActiveScene() == conversationIndex)
+        {
 
-			startConversation = false;
+            // call when in conversation
+            convo = currentConversation.GetComponent<Conversation>();
+            //consequences = convo.GetConsequences();
 
-			// call when in conversation
-			convo = currentConversation.GetComponent<Conversation> ();
-			consequences = convo.GetConsequences ();
+            currentLine = convo.GetNextLine();
+            if (currentLine != null)
+            {
+                switch (currentLine.type)
+                {
+                    case ScriptLine.ScriptType.LeftCharacter:
+                        {
+                            LeftCharacterSpeaks();
+                            break;
+                        }
+                    case ScriptLine.ScriptType.RightCharacter:
+                        {
+                            RightCharacterSpeaks();
+                            break;
+                        }
+                }
+            }
 
-			Invoke ("LeftCharacterSpeaks", speachDelay);
-		}
-	}
+
+        }
+    }
 
     private void LeftCharacterSpeaks()
     {
-        leftSpeach = convo.GetNextLeftSpeach();
-        
-        
-        if (leftSpeach.Equals(string.Empty))
-        {
-            Invoke("RightCharacterSpeaks", speachDelay);
-        }
-        else
-        {
-            ui.LeftCharacterSpeaks(leftSpeach);
-            Invoke("LeftCharacterSpeaks", speachDelay);
-        }
-
+        ui.LeftCharacterSpeaks(currentLine.value);
     }
 
     private void RightCharacterSpeaks()
     {
-        rightSpeach = convo.GetNextRightSpeach();
-        
-       
-        if (rightSpeach.Equals(string.Empty))
-        {
-            Invoke("DisplayChoices", speachDelay);
-        }
-        else
-        {
-            ui.RightCharacterSpeaks(rightSpeach);
-            Invoke("RightCharacterSpeaks", speachDelay);
-        }
+
+        ui.RightCharacterSpeaks(currentLine.value);
+
     }
 
     private void DisplayChoices()
