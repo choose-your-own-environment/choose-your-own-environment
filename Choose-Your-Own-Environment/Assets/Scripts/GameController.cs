@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
     public UIController ui;
     private Conversation convo;
 	public PlayerStats gameProgress;
-    public ScriptLine currentLine;
+	public StoryLine currentLine;
 	public bool advanceConversation = true;
     //public bool startConversation = false;
 
@@ -49,23 +49,23 @@ public class GameController : MonoBehaviour {
 			return;
 		}
 
-		switch (currentLine.type) {
-		case ScriptLine.ScriptType.Narrator:
+		switch (currentLine.GetType()) {
+		case StoryLine.ScriptType.Narrator:
 			{
 				NarratorSpeaks ();
 				break;
 			}
-		case ScriptLine.ScriptType.LeftCharacter:
+		case StoryLine.ScriptType.LeftCharacter:
 			{
 				LeftCharacterSpeaks ();
 				break;
 			}
-		case ScriptLine.ScriptType.RightCharacter:
+		case StoryLine.ScriptType.RightCharacter:
 			{
 				RightCharacterSpeaks ();
 				break;
 			}
-		case ScriptLine.ScriptType.Prompt:
+		case StoryLine.ScriptType.Prompt:
 			{
 				DisplayPrompt();
 				break;
@@ -77,19 +77,19 @@ public class GameController : MonoBehaviour {
 
 	private void NarratorSpeaks()
 	{
-		ui.NarratorSpeaks (currentLine.value);
+		ui.NarratorSpeaks (currentLine.narrator);
 		advanceConversation = true;
 	}
 
     private void LeftCharacterSpeaks()
     {
-        ui.LeftCharacterSpeaks(currentLine.value);
+		ui.LeftCharacterSpeaks(currentLine.leftcharacter);
 		advanceConversation = true;
     }
 
     private void RightCharacterSpeaks()
     {
-        ui.RightCharacterSpeaks(currentLine.value);
+		ui.RightCharacterSpeaks(currentLine.rightcharacter);
 		advanceConversation = true;
     }
 
@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour {
 
 	private void DisplayPrompt()
 	{
-		ui.Prompt (currentLine.value);
+		ui.Prompt (currentLine.prompt);
 	}
 
 	public void NextConversation(int choice)

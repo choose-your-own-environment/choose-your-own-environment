@@ -4,13 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using YamlDotNet.Core;
+using YamlDotNet.Core.Events;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 public class ConversationLoader : MonoBehaviour {
     public List<string> music;
     public List<string> choice;
-    public List<ScriptLine> script;
-
-    
+	public Dictionary<string, StoryNode> script;
 
     private const string delimiter = ">:";
     private const string musicKeyName = "music";
@@ -26,12 +28,12 @@ public class ConversationLoader : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        script = new List<ScriptLine>();
+		script = new Dictionary<string, StoryNode> ();
         choice = new List<string>();
         music = new List<string>();
         
-        
-        ParseText(SourceText);
+		ParseYaml (SourceText);
+//        ParseText(SourceText);
     }
 
     private static string NormalizeDiacriticalCharacters(byte[] bytes)
@@ -47,98 +49,28 @@ public class ConversationLoader : MonoBehaviour {
 		return value;
     }
 
-    private void ParseText(TextAsset text)
-    {
-        string input = NormalizeDiacriticalCharacters(text.bytes);
+	private void ParseYaml(TextAsset text)
+	{
+		List<StoryNode> nodes = new List<StoryNode>();
 
-        Debug.Log(input.Length);
-        using (StringReader sr = new StringReader(input))
-        {
-            string line = string.Empty;
-            int delimLocation = -1;
-            string currentKey = string.Empty;
-            string currentVal = string.Empty;
-            do
-            {
-                line = sr.ReadLine();
+		var input = new StringReader(NormalizeDiacriticalCharacters (text.bytes));
 
-                if (line != null && line.Contains(delimiter))
-                {
-                    if (currentKey != string.Empty)
-                    {
-                        AddValue(currentKey, currentVal);
+		var deserializer = new DeserializerBuilder()
+			.WithNamingConvention(new CamelCaseNamingConvention())
+			.IgnoreUnmatchedProperties()
+			.Build();
 
-                        currentKey = string.Empty;
-                        currentVal = string.Empty;
-                    }
+		var parser = new Parser(input);
 
-                    delimLocation = line.IndexOf(delimiter);
+		// Consume the stream start event "manually"
+		parser.Expect<StreamStart>();
 
-                    currentKey = line.Substring(0, delimLocation);
-                    currentVal = line.Substring(delimLocation + delimiter.Length);
+		while (parser.Accept<DocumentStart>())
+		{
+			// Deserialize the document
+			var doc = deserializer.Deserialize<StoryNode>(parser);
 
-
-                }
-                else
-                {
-                    currentVal = string.Concat(currentVal, Environment.NewLine, line);
-                }
-
-            } while (line != null);
-            AddValue(currentKey, currentVal);
-
-        }
-
-
-    }
-
-    private void AddValue(string key, string val)
-    {
-        key = key.ToLower();
-
-        ScriptLine.ScriptType type;
-
-        switch (key)
-        {
-            case musicKeyName:
-                {
-                    music.Add(val);
-                    return;
-                }
-            case choiceKeyName:
-                {
-                    choice.Add(val);
-                    return;
-                }
-            case leftKeyName:
-                {
-                    type = ScriptLine.ScriptType.LeftCharacter;
-                    break;
-                }
-            case rightKeyName:
-                {
-                    type = ScriptLine.ScriptType.RightCharacter;
-                    break;
-                }
-            case narratorKeyName:
-                {
-                    type = ScriptLine.ScriptType.Narrator;
-                    break;
-                }
-            case promptKeyName:
-                {
-                    type = ScriptLine.ScriptType.Prompt;
-                    break;
-                }            
-             default:
-                {
-                    return;
-                }
-        }
-
-        script.Add(new ScriptLine(type, val));
-    }
-
-
-    
+			script.Add (doc.id, doc);
+		}
+	}
 }

@@ -6,7 +6,8 @@ using UnityEngine;
 public class Conversation : MonoBehaviour {
     //public List<string> leftCharacter;
     //public List<string> rightCharacter;
-    public List<ScriptLine> script;
+	public Dictionary<string, StoryNode> script;
+	public string nodeId;
     public List<string> choices;
     public List<GameObject> consequence;
     //TextLoader textLoader;
@@ -16,6 +17,7 @@ public class Conversation : MonoBehaviour {
 	private GameController gameController;
 
     private int currentIndex = 0;
+	private StoryNode currentNode;
 
     // Use this for initialization
     void Start () {
@@ -63,20 +65,26 @@ public class Conversation : MonoBehaviour {
 			}
 		}
 
-        /*
-		gameController = FindObjectOfType<GameController> ();
-		if (gameController != null) {
-			gameController.startConversation = true;
+		currentNode = script [nodeId];
+
+		if (currentNode.stats != null) {
+			gameController = FindObjectOfType<GameController> ();
+			if (gameController != null) {
+				gameController.gameProgress.UpdateStats (currentNode.stats);
+			}
 		}
-        */
     }
 
-    public ScriptLine GetNextLine()
+	public StoryLine GetNextLine()
     {
-        ScriptLine returnval = null;
-        if (currentIndex < script.Count)
+		if (currentNode == null || currentNode.dialog == null) {
+			return null;
+		}
+
+		StoryLine returnval = null;
+		if (currentIndex < currentNode.dialog.Count)
         {
-            returnval = script[currentIndex];
+			returnval = currentNode.dialog[currentIndex];
             currentIndex++;
         }
         return returnval;
