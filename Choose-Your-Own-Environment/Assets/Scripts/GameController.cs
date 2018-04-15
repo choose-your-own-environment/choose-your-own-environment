@@ -44,8 +44,8 @@ public class GameController : MonoBehaviour {
 		//consequences = convo.GetConsequences();
 
 		currentLine = convo.GetNextLine();
+
 		if (currentLine == null) {
-			DisplayChoices ();
 			return;
 		}
 
@@ -68,6 +68,34 @@ public class GameController : MonoBehaviour {
 		case StoryLine.ScriptType.Prompt:
 			{
 				DisplayPrompt();
+				break;
+			}
+		case StoryLine.ScriptType.Choice:
+			{
+				DisplayChoices ();
+				break;
+			}
+		case StoryLine.ScriptType.Background:
+			{
+				ChangeBackground();
+				break;
+			}
+		case StoryLine.ScriptType.Music:
+			{
+				FindObjectOfType<MusicManager>().ChangeMusic(currentLine.music);
+				advanceConversation = true;
+				break;
+			}
+		case StoryLine.ScriptType.Sound:
+			{
+				FindObjectOfType<SoundManager>().PlaySound(currentLine.sound);
+				advanceConversation = true;
+				break;
+			}
+		case StoryLine.ScriptType.None:
+			{
+				Debug.Log ("empty node");
+				advanceConversation = true;
 				break;
 			}
 		}
@@ -95,7 +123,7 @@ public class GameController : MonoBehaviour {
 
     private void DisplayChoices()
     {
-		ui.Choices (convo.choices);
+		ui.Choices (currentLine.choices);
     }
 
 	private void DisplayPrompt()
@@ -103,9 +131,16 @@ public class GameController : MonoBehaviour {
 		ui.Prompt (currentLine.prompt);
 	}
 
-	public void NextConversation(int choice)
+	private void ChangeBackground()
 	{
-		// TODO fire consequence and load next text
+		ui.Background (currentLine.background);
+		advanceConversation = true;
+	}
+
+	public void NextConversation(string choice)
+	{
+		convo.LoadNextConversation (choice);
+		advanceConversation = true;
 	}
 
 	public void NextScene()

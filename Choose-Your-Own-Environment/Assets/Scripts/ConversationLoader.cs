@@ -36,7 +36,7 @@ public class ConversationLoader : MonoBehaviour {
 //        ParseText(SourceText);
     }
 
-    private static string NormalizeDiacriticalCharacters(byte[] bytes)
+    private static string NormalizeToAscii(byte[] bytes)
     {
         string value = System.Text.Encoding.Default.GetString(bytes);
         if (value == null)
@@ -53,7 +53,7 @@ public class ConversationLoader : MonoBehaviour {
 	{
 		List<StoryNode> nodes = new List<StoryNode>();
 
-		var input = new StringReader(NormalizeDiacriticalCharacters (text.bytes));
+		var input = new StringReader(NormalizeToAscii (text.bytes));
 
 		var deserializer = new DeserializerBuilder()
 			.WithNamingConvention(new CamelCaseNamingConvention())

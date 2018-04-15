@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour {
+public class MusicManager : MonoBehaviour {
 
 	AudioSource backgroundMusic;
 	[System.NonSerialized]
@@ -12,13 +12,8 @@ public class AudioManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		startPlaying = true;
-		songName = "choose-1850";
-		
 		backgroundMusic = GetComponent<AudioSource> ();
 		backgroundMusic.loop = true;
-
-		DontDestroyOnLoad (gameObject);
 	}
 	
 	// Update is called once per frame
@@ -52,7 +47,7 @@ public class AudioManager : MonoBehaviour {
 
 	public void ChangeMusic(string SongName) {
 
-		if (this.songName.Equals(SongName) && backgroundMusic.isPlaying) {
+		if (SongName == null || SongName.Equals(this.songName) && backgroundMusic.isPlaying) {
 			return;
 		}
 
@@ -66,5 +61,8 @@ public class AudioManager : MonoBehaviour {
 		}
 
 		this.songName = SongName;
+	}
+
+	public void PlaySound(string soundName) {
 	}
 }

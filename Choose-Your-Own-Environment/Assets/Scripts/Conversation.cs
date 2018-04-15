@@ -13,7 +13,7 @@ public class Conversation : MonoBehaviour {
     //TextLoader textLoader;
     ConversationLoader conversationLoader;
 
-	private AudioManager audioManager;
+	private MusicManager audioManager;
 	private GameController gameController;
 
     private int currentIndex = 0;
@@ -59,7 +59,7 @@ public class Conversation : MonoBehaviour {
 		{
 			Debug.Log("found music! song="+ conversationLoader.music[0]);
 			
-			audioManager = FindObjectOfType<AudioManager> ();
+			audioManager = FindObjectOfType<MusicManager> ();
 			if (audioManager != null) {
 				audioManager.ChangeMusic (conversationLoader.music[0]);
 			}
@@ -89,6 +89,19 @@ public class Conversation : MonoBehaviour {
         }
         return returnval;
     }
+
+	public void LoadNextConversation(string id)
+	{
+		if (!script.ContainsKey (id)) {
+			Debug.Log ("no story line id=" + id);
+			return;
+		}
+
+		currentNode = script [id];
+		currentIndex = 0;
+
+		return;
+	}
 
     /*
     public string GetNextLeftSpeach()

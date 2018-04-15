@@ -10,7 +10,9 @@ public class UIController : MonoBehaviour {
 	public Image rightPortrait;
     public Text narratorText;
     public Button promptButton;
+	public Image backgroundImage;
     public List<Button> choiceList;
+	public List<string> choiceValues;
 
 	// Use this for initialization
 	void Start () {
@@ -41,7 +43,7 @@ public class UIController : MonoBehaviour {
     public void RightCharacterSpeaks(string speach)
     {
         rightCharacterText.text = speach;
-		leftPortrait.gameObject.SetActive(true);
+		rightPortrait.gameObject.SetActive(true);
     }
 
     public void NarratorSpeaks(string speach)
@@ -52,13 +54,20 @@ public class UIController : MonoBehaviour {
 	public void Prompt(string text) {
 		promptButton.GetComponentInChildren<Text> ().text = text;
 		promptButton.gameObject.SetActive(true);
-		promptButton.enabled = true;
 	}
 
-	public void Choices(List<string> choices) {
-		for (int i = 0; i < choices.Count; i++) {
-			choiceList [i].GetComponentInChildren<Text> ().text = choices [i];
-			choiceList [i].gameObject.SetActive(true);
+	public void Background(string image) {
+		backgroundImage.sprite = Resources.Load<Sprite> ("Background_images/" + image);
+		backgroundImage.gameObject.SetActive (true);
+	}
+
+	public void Choices(Dictionary<string, string> choices) {
+		int i = 0;
+		foreach (KeyValuePair<string, string> entry in choices) {
+			choiceList [i].GetComponentInChildren<Text> ().text = entry.Value;
+			choiceList [i].gameObject.SetActive (true);
+			choiceValues [i] = entry.Key;
+			i++;
 		}
 	}
 
@@ -71,6 +80,6 @@ public class UIController : MonoBehaviour {
 	public void OnChoice(int i) {
 		Debug.Log ("click choice=" + i);
 		Reset ();
-		FindObjectOfType<GameController> ().NextConversation (i);
+		FindObjectOfType<GameController> ().NextConversation (choiceValues[i]);
 	}
 }

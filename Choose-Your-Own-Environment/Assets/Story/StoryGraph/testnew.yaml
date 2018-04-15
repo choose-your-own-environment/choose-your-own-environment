@@ -5,6 +5,8 @@ stats:
   carbon: 1.05
   prosperity: 1.2
 dialog:
+ - rem-background: 1800
+ - music: choices-1
  - narrator: |
      August 1st, 1800. Another hazy morning in North Philadelphia.
      There's a rap on your front door.
@@ -17,9 +19,19 @@ dialog:
  - leftcharacter: “Hello. I’m Professor Montgomery. I’d like to buy you a drink, as way of congratulations on your new fortune.”
  - narrator: She gestures to a gilded coach across the street.
  - choices:
-   2: ”No thanks!”
-   3: ”Don't mind if I do!”
+     2: ”No thanks!”
+     3: ”Don't mind if I do!”
 ---
 id: 2
+stats:
+  wealth: 2
+  carbon: 1.10
+  prosperity: 0.99
+dialog:
+ - music: choices-2
+ - narrator: |
+     You really messed it up this time.
+ - prompt: So what?
+ - rightcharacter: Yes you did mess it up.
 ---
 id: 3
