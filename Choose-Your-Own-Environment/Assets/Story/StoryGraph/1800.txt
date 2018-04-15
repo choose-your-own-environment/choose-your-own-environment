@@ -3,7 +3,7 @@ id: 1
 dialog:
  - image:
      background: 1800
-     leftcharacter: ProfessorMale
+     leftcharacter: professor montgomery
      rightcharacter: MoneyGuy
  - hide:
      leftcharacter: true
