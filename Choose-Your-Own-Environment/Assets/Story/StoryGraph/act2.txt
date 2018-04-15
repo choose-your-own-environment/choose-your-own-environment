@@ -34,7 +34,7 @@ dialog:
  - prompt: Board the train.
  - narrator: As you cross the threshold of the train car entrance, there is another obnoxious flash of light. You fall down to your knees.
  - prompt: ~ next ~
- - next: end
+ - next: 99
 ---
 id: 23a
 dialog:
