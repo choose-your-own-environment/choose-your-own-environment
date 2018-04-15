@@ -53,4 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentConversation: {fileID: 0}
   ui: {fileID: 0}
+  gameProgress: {fileID: 11400000, guid: bd7b564df8b374940ac470e23a1c2889, type: 2}
+  currentLine: {fileID: 0}
+  advanceConversation: 1
   speachDelay: 3

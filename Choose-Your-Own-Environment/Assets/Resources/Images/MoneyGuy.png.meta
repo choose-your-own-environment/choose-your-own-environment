@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: af0ce7d2ecd5b734abb374a6bec4528b
+=======
+guid: 6f8f93d95a3596940acfd5d83a0c539d
+>>>>>>> yamldotnet
 timeCreated: 1523771972
 licenseType: Free
 TextureImporter:

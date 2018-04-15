@@ -5,16 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
+	public Dictionary<string, StoryNode> script = new Dictionary<string, StoryNode>();
 	public GameObject currentConversation;
     public UIController ui;
     private Conversation convo;
 	public PlayerStats gameProgress;
-    public ScriptLine currentLine;
+	public StoryLine currentLine;
 	public bool advanceConversation = true;
     //public bool startConversation = false;
 
     // Use this for initialization
     void Start () {
+		
         GameObject conversation = GameObject.FindGameObjectWithTag("Conversation");
         convo = conversation.GetComponentInChildren<Conversation>();
         currentConversation = convo.gameObject;
@@ -44,30 +46,68 @@ public class GameController : MonoBehaviour {
 		//consequences = convo.GetConsequences();
 
 		currentLine = convo.GetNextLine();
+
 		if (currentLine == null) {
-			DisplayChoices ();
 			return;
 		}
 
-		switch (currentLine.type) {
-		case ScriptLine.ScriptType.Narrator:
+		switch (currentLine.GetType()) {
+		case StoryLine.ScriptType.Narrator:
 			{
 				NarratorSpeaks ();
 				break;
 			}
-		case ScriptLine.ScriptType.LeftCharacter:
+		case StoryLine.ScriptType.LeftCharacter:
 			{
 				LeftCharacterSpeaks ();
 				break;
 			}
-		case ScriptLine.ScriptType.RightCharacter:
+		case StoryLine.ScriptType.RightCharacter:
 			{
 				RightCharacterSpeaks ();
 				break;
 			}
-		case ScriptLine.ScriptType.Prompt:
+		case StoryLine.ScriptType.Prompt:
 			{
 				DisplayPrompt();
+				break;
+			}
+		case StoryLine.ScriptType.Choice:
+			{
+				DisplayChoices ();
+				break;
+			}
+		case StoryLine.ScriptType.Image:
+			{
+				ChangeImage();
+				break;
+			}
+		case StoryLine.ScriptType.HideImage:
+			{
+				HideImage ();
+				break;
+			}
+		case StoryLine.ScriptType.Music:
+			{
+				FindObjectOfType<MusicManager>().ChangeMusic(currentLine.music);
+				advanceConversation = true;
+				break;
+			}
+		case StoryLine.ScriptType.Sound:
+			{
+				FindObjectOfType<SoundManager>().PlaySound(currentLine.sound);
+				advanceConversation = true;
+				break;
+			}
+		case StoryLine.ScriptType.Next:
+			{
+				NextConversation (currentLine.next);
+				break;
+			}
+		case StoryLine.ScriptType.None:
+			{
+				Debug.Log ("empty node");
+				advanceConversation = true;
 				break;
 			}
 		}
@@ -77,35 +117,48 @@ public class GameController : MonoBehaviour {
 
 	private void NarratorSpeaks()
 	{
-		ui.NarratorSpeaks (currentLine.value);
+		ui.NarratorSpeaks (currentLine.narrator);
 		advanceConversation = true;
 	}
 
     private void LeftCharacterSpeaks()
     {
-        ui.LeftCharacterSpeaks(currentLine.value);
+		ui.LeftCharacterSpeaks(currentLine.leftcharacter);
 		advanceConversation = true;
     }
 
     private void RightCharacterSpeaks()
     {
-        ui.RightCharacterSpeaks(currentLine.value);
+		ui.RightCharacterSpeaks(currentLine.rightcharacter);
 		advanceConversation = true;
     }
 
     private void DisplayChoices()
     {
-		ui.Choices (convo.choices);
+		ui.Choices (currentLine.choices);
     }
 
 	private void DisplayPrompt()
 	{
-		ui.Prompt (currentLine.value);
+		ui.Prompt (currentLine.prompt);
 	}
 
-	public void NextConversation(int choice)
+	private void ChangeImage()
 	{
-		// TODO fire consequence and load next text
+		ui.ChangeImages (currentLine.image);
+		advanceConversation = true;
+	}
+
+	private void HideImage()
+	{
+		ui.HideImages (currentLine.hide);
+		advanceConversation = true;
+	}
+
+	public void NextConversation(string choice)
+	{
+		convo.LoadNextConversation (choice);
+		advanceConversation = true;
 	}
 
 	public void NextScene()

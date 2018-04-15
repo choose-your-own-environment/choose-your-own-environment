@@ -1,0 +1,59 @@
+﻿---
+id: 1
+dialog:
+ - image:
+     background: 1800
+     leftcharacter: ProfessorMale
+     rightcharacter: MoneyGuy
+ - hide:
+     leftcharacter: true
+     rightcharacter: true
+ - music: choices-1
+ - sound: timewarp
+ - narrator: |
+     August 1st, 1800. Another hazy morning in North Philadelphia.
+     There's a rap on your front door.
+     A courier hands you a large envelope, then speeds off without a word.
+     It’s from your uncle. There’s two pieces of mail inside - a letter, and a deed.
+     “To my only relative: Please use this wisely. I don’t have anyone interested in the property right now, but it’s worth at least $200 an acre. It’s mostly forested too, so it’s even more valuable with timber accounted for. Make yourself a bundle, or take a long walk through the woods - it’s up to you.”
+     The other piece of mail is a deed for… 5,000 acres! You do the math, and feel your heart skip a beat. You’re a millionaire!
+     You feel a ginger tap on your shoulder.
+ - prompt: Turn around...?
+ - leftcharacter: “Hello. I’m Professor Montgomery. I’d like to buy you a drink, as way of congratulations on your new fortune.”
+ - narrator: She gestures to a gilded coach across the street.
+ - choices:
+     1a: ”No thanks!”
+     1b: ”Don't mind if I do!”
+---
+id: 1a
+dialog:
+ - leftcharacter: "Too bad"
+ - prompt: (...)
+ - next: 2
+---
+id: 1b
+dialog:
+ - narrator: "Off you go!"
+ - prompt: (...)
+ - next: 2
+---
+id: 2
+dialog:
+ - leftcharacter: You want my stuff
+ - prompt: hmm
+ - rightcharacter: No you want mine
+ - choices:
+     2a: Do the bad thing
+     2b: Do the not as bad thing
+---
+id: 2a
+dialog:
+ - narrator: you did a bad thing, and the market moved faster than you anyways
+ - prompt: ok
+ - next: 31
+---
+id: 2b
+dialog:
+ - narrator: you did a not as bad thing, and people are happy. Plus you made money in the long run.
+ - prompt: yay
+ - next: 31

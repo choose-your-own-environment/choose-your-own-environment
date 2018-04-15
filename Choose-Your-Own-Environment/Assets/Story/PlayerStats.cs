@@ -6,5 +6,10 @@ using UnityEngine;
 public class PlayerStats : ScriptableObject {
 	public double Wealth;
 	public int FutureCarbon;
+	public double PresentPopulation;
 	public double PresentProsperity;
+
+	public void UpdateStats(StatChange change) {
+		// TODO implement stat changes
+	}
 }

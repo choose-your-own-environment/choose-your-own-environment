@@ -6,16 +6,20 @@ using UnityEngine;
 public class Conversation : MonoBehaviour {
     //public List<string> leftCharacter;
     //public List<string> rightCharacter;
-    public List<ScriptLine> script;
+	public string nodeId;
     public List<string> choices;
     public List<GameObject> consequence;
     //TextLoader textLoader;
     ConversationLoader conversationLoader;
+	[System.NonSerialized]
+	public Dictionary<string, StoryNode> script;
 
-	private AudioManager audioManager;
+	private MusicManager audioManager;
 	private GameController gameController;
 
     private int currentIndex = 0;
+	private StoryNode currentNode;
+
 
     // Use this for initialization
     void Start () {
@@ -57,30 +61,49 @@ public class Conversation : MonoBehaviour {
 		{
 			Debug.Log("found music! song="+ conversationLoader.music[0]);
 			
-			audioManager = FindObjectOfType<AudioManager> ();
+			audioManager = FindObjectOfType<MusicManager> ();
 			if (audioManager != null) {
 				audioManager.ChangeMusic (conversationLoader.music[0]);
 			}
 		}
 
-        /*
-		gameController = FindObjectOfType<GameController> ();
-		if (gameController != null) {
-			gameController.startConversation = true;
+		currentNode = script [nodeId];
+
+		if (currentNode.stats != null) {
+			gameController = FindObjectOfType<GameController> ();
+			if (gameController != null) {
+				gameController.gameProgress.UpdateStats (currentNode.stats);
+			}
 		}
-        */
     }
 
-    public ScriptLine GetNextLine()
+	public StoryLine GetNextLine()
     {
-        ScriptLine returnval = null;
-        if (currentIndex < script.Count)
+		if (currentNode == null || currentNode.dialog == null) {
+			return null;
+		}
+
+		StoryLine returnval = null;
+		if (currentIndex < currentNode.dialog.Count)
         {
-            returnval = script[currentIndex];
+			returnval = currentNode.dialog[currentIndex];
             currentIndex++;
         }
         return returnval;
     }
+
+	public void LoadNextConversation(string id)
+	{
+		if (!script.ContainsKey (id)) {
+			Debug.Log ("no story line id=" + id);
+			return;
+		}
+
+		currentNode = script [id];
+		currentIndex = 0;
+
+		return;
+	}
 
     /*
     public string GetNextLeftSpeach()

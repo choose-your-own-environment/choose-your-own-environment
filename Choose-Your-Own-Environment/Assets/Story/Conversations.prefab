@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4125466113994178}
   - component: {fileID: 114671260662844440}
-  - component: {fileID: 114993931061639940}
+  - component: {fileID: 114853457720690030}
   m_Layer: 0
   m_Name: Scene1-1
   m_TagString: Untagged
@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4557089519731722}
-  - component: {fileID: 114489808962646692}
   m_Layer: 0
   m_Name: Conversations
   m_TagString: Conversation
@@ -71,17 +70,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114489808962646692
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1358146385310338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd00959d6334b24197c90eb600fdd71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114671260662844440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,9 +81,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b27bcbbb047d340814a7ac9c87d47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodeId: 1
+  choices: []
   consequence:
   - {fileID: 0}
---- !u!114 &114993931061639940
+--- !u!114 &114853457720690030
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -108,4 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: []
   choice: []
-  SourceText: {fileID: 4900000, guid: 3cd0f2605fd29784dad4ce26d3bad467, type: 3}
+  SourceText:
+  - {fileID: 4900000, guid: 4f7bfd9a9487f4e65b4469b3d344301b, type: 3}
+  - {fileID: 4900000, guid: c5d45b53b5dc24d33b99c66f8432c9a4, type: 3}
+  - {fileID: 4900000, guid: 2b6e62c8c44334755a40db7816a5eaa8, type: 3}
