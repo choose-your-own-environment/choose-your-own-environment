@@ -29,7 +29,6 @@ dialog:
 id: 1a
 dialog:
  - image:
-     background: 1800
      leftcharacter: ProfessorMale-Sad
  - leftcharacter: "Too bad"
  - prompt: (...)
@@ -37,6 +36,8 @@ dialog:
 ---
 id: 1b
 dialog:
+ - image:
+     leftcharacter: ProfessorMale
  - narrator: "Off you go!"
  - prompt: (...)
  - next: 2
@@ -44,7 +45,6 @@ dialog:
 id: 2
 dialog:
  - image:
-     background: 1800
      leftcharacter: ProfessorMale
  - leftcharacter: You want my stuff
  - prompt: hmm
@@ -55,12 +55,16 @@ dialog:
 ---
 id: 2a
 dialog:
+ - image:
+     rightcharacter: MoneyGuy-Happy
  - narrator: you did a bad thing, and the market moved faster than you anyways
  - prompt: ok
  - next: 21
 ---
 id: 2b
 dialog:
+ - image:
+     leftcharacter: ProfessorMale
  - narrator: you did a not as bad thing, and people are happy. Plus you made money in the long run.
  - prompt: yay
  - next: 21
