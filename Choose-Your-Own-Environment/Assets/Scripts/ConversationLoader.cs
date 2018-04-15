@@ -80,5 +80,7 @@ public class ConversationLoader : MonoBehaviour {
 
 			gameController.script.Add (doc.id, doc);
 		}
+
+		Debug.Log ("finished a parse");
 	}
 }

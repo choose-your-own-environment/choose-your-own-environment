@@ -1,6 +1,0 @@
----
-id: 23a
-dialog:
- - narrator: Fifty years of being a businessman is in your blood now, and you smell a profitable deal. As you finish scribbling your signature, you can swear you hear the sound of the professor's watch in your ear... and then, another flash of light blinds you.
- - prompt: ~ next ~
- - next: end

@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour {
 			}
 		case StoryLine.ScriptType.Choice:
 			{
-				DisplayChoices ();
+ 				DisplayChoices ();
 				return;
 			}
 		case StoryLine.ScriptType.Image:
@@ -108,7 +108,7 @@ public class GameController : MonoBehaviour {
 			}
 		case StoryLine.ScriptType.Next:
 			{
-				NextConversation (currentLine.next);
+ 				NextConversation (currentLine.next);
 				break;
 			}
 		case StoryLine.ScriptType.None:
