@@ -10,7 +10,7 @@ public class ConversationLoader : MonoBehaviour {
     public List<string> choice;
     public List<ScriptLine> script;
 
-    //public Dictionary<string, List<string>> dictionary;
+    
 
     private const string delimiter = ">:";
     private const string musicKeyName = "music";
@@ -29,7 +29,7 @@ public class ConversationLoader : MonoBehaviour {
         script = new List<ScriptLine>();
         choice = new List<string>();
         music = new List<string>();
-        //dictionary = new Dictionary<string, List<string>>();
+        
         
         ParseText(SourceText);
     }
@@ -67,8 +67,6 @@ public class ConversationLoader : MonoBehaviour {
                     if (currentKey != string.Empty)
                     {
                         AddValue(currentKey, currentVal);
-                        //Debug.Log(currentKey);
-                        //Debug.Log(currentVal);
 
                         currentKey = string.Empty;
                         currentVal = string.Empty;
@@ -87,9 +85,8 @@ public class ConversationLoader : MonoBehaviour {
                 }
 
             } while (line != null);
-            //AddValue(currentKey, currentVal);
-            //Debug.Log(currentKey);
-            //Debug.Log(currentVal);
+            AddValue(currentKey, currentVal);
+
         }
 
 
