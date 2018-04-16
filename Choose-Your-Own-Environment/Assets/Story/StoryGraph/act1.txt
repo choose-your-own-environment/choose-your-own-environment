@@ -1,0 +1,131 @@
+---
+id: 1
+dialog:
+ - image:
+     background: 1800
+     leftcharacter: professor montgomery
+     rightcharacter: MoneyGuy
+ - hide:
+     leftcharacter: true
+     rightcharacter: true
+ - music: choices-1800
+ - sound: timewarp
+ - narrator: |
+     August 1st, 1800. Another hazy morning in North Philadelphia.
+     There's a rap on your front door.
+     A courier hands you a large envelope, then speeds off without a word.
+     It's from your uncle. There's two pieces of mail inside - a letter, and a deed.
+     "To my only relative: Please use this wisely. I don't have anyone interested in the property right now, but it's worth at least $200 an acre. It's mostly forested too, so it's even more valuable with timber accounted for. Make yourself a bundle, or take a long walk through the woods - it's up to you."
+     The other piece of mail is a deed for... 5,000 acres! You do the math, and feel your heart skip a beat. You're a millionaire!
+     You feel a ginger tap on your shoulder.
+ - prompt: Turn around...?
+ - leftcharacter: "Hello. I'm Professor Montgomery. I'd like to buy you a drink, as way of congratulations on your new fortune."
+ - prompt: "Oh, hi?"
+ - narrator: She gestures to a gilded coach across the street.
+ - choices:
+     2a: "No thanks!"
+     2b: "Don't mind if I do!"
+---
+id: 2a
+dialog:
+ - image:
+     leftcharacter: ProfessorMale-Sad
+ - leftcharacter: "We can speak here then, if that's your preference. To be frank, I want you to sell me that land. I'll pay you $1,250,000."
+ - prompt: (...)
+ - narrator: Before you can protest the absurdity of the situation, another stranger has sauntered across the street, fervently tapping his cane on the cobblestone as he approaches you.
+ - prompt: (...)
+ - rightcharacter: "J. Hornsby at your service. Everybody calls me Moneybags though, on account of how wealthy I am. And, because I am so wealthy, I'm prepared to make an overly generous offer - to wit, I'll pay you $1,500,000 for that deed."
+ - choices:
+     3a: "Sold, to Moneybags!"
+     3b: "Sold, to Professor Montgomery!"
+     3c: "Who are you two?"
+---
+id: 2b
+dialog:
+ - image:
+     leftcharacter: ProfessorMale
+ - narrator: You may be a millionaire, and have no idea who this person is - but free drinks are free drinks. You and the Professor hop into her carriage and speed off to the nearest pub - a rather dingy establishment, you now deem.
+     Once inside at a table with drinks in hand, the professor offers a toast.
+ - prompt: (...)
+ - leftcharacter: "What shall we toast to?"
+ - prompt: "To land!"
+ - leftcharacter: The Professor smiles broadly at this, and extends her cup high:
+     "Yes, to land! On that note, I would like to make a proposition. Why don't you sell it to me - all of it - for $1,250,000."
+ - narrator: You nearly spit out your drink, but you don't have a chance to respond before another stranger has sat down at the table. It's an old man in a suit.
+ - prompt: (...)
+ - rightcharacter: "J. Hornsby at your service. Everybody calls me Moneybags though, on account of how wealthy I am. And, because I am so wealthy, I'm prepared to make an overly generous offer - to wit, I'll pay you $1,500,000 for that deed."
+ - choices:
+     3a: "Sold, to Moneybags!"
+     3b: "Sold, to Professor Montgomery!"
+     3c: "Who are you two?"
+---
+id: 3a
+dialog:
+ - image:
+     leftcharacter: ProfessorMale
+ - narrator: The old man laughs as he takes the deed from you. The professor groans. There is a blinding flash of light as she snaps her golden stopwatch shut.
+     Your eyes adjust quickly to a radically changed scene. You're sitting on a bench next to Professor Montgomery, in a train station. You stand with a start, but the professor gently motions you to take your seat. You feel so light-headed from standing that you quickly oblige. She slowly twists her pocket watch in her palm.
+ - prompt: (...)
+ - leftcharacter: "If you had a hard time believing me before, you're really going to struggle now. You see, I've just brought you fifty years forward into the future."
+ - prompt: (...)
+ - narrator: A train whistles in the distance. The professor sighs in frustration.
+ - prompt: (...)
+ - leftcharacter: "Do you notice anything depressing about this situation? Aside from your disorientation, which is normally associated with time travel."
+ - prompt: (...)
+ - narrator: You stare out beyond the railway ahead and notice that there are hardly any trees to be seen anywhere.
+ - prompt: "Where are we?"
+ - leftcharacter: "Northern Philadelphia. It's hard to recognize, though, isn't it? You may not have realized it at the time, but you made a major investment in charcoal energy by selling your Uncle's deed to Moneybags."
+ - prompt: (...)
+ - narrator: The professor stands up as the train grows louder, closer.
+ - prompt: (...)
+ - leftcharacter: "I'm afraid the investment didn't pay off for you, either. I suggest you heed my advice this time - take what's left of your assets and invest them in a new technology, called hydroelectricity. It is a way of harnessing the energy of flowing water for the benefit of humankind."
+ - prompt: (...)
+ - narrator: The train rolls up and comes to a halt. Before boarding, the professor turns back and shoots you a serious look.
+ - prompt: (...)
+ - leftcharacter: "Or, you can listen to the words of another greedy old man. The choice is yours, but we will all bear the consequences of your actions."
+ - prompt: (...)
+ - narrator: The professor vanishes in a sea of tired, dirty people disembarking from the train. When the crowd clears, she is gone. The train starts forward, and rolls into the distance.
+ - next: 21
+---
+id: 3b
+dialog:
+ - image:
+     rightcharacter: MoneyGuy
+ - narrator: The old man curses and slams his fist into his palm. The professor shakes your hand, and snaps her stopwatch shut in a blinding flash of light.
+     Your eyes readjust quickly. You are sitting on a bench at a train station - the professor is next to you, smelling a flower.
+ - prompt: (...)
+ - leftcharacter: "You hear that sound?"
+ - prompt: (...)
+ - narrator: There is a faint whistle of a train approaching.
+ - prompt: "Where are we?"
+ - leftcharacter: "We're still in Philadelphia, just down the road from the pub we were in. I've transported us fifty years into the future, however. That is why you are likely feeling disoriented."
+ - prompt: (...)
+ - narrator: Your ease of acceptance of this news is more disturbing to you than the information itself. You can't explain why, but you just know that a long time has passed. You have a slight headache, but otherwise feel the same as you did before the professor shut her watch.
+ - prompt: (...)
+ - leftcharacter: "You have no idea how much the world would have suffered if you had taken Moneybags' offer. You see, you made an investment in a method of energy production, and that had a profoundly positive impact on the environment. And your wallet."
+ - prompt: (...)
+ - narrator: You hadn't noticed your clothing. Your old trousers and linen shirt are gone, and replaced by a sharp-looking suit of your own. The train is getting closer to the station.
+ - prompt: (...)
+ - leftcharacter: "I have another matter to attend to, but I want to extend another piece of good advice - you will receive an offer soon that will very much damage the world around you. I would like you to rebuke this offer, investing instead in a new technology known as hydroelectricity."
+ - prompt: (...)
+ - narrator: Now the train grinds to a halt at the platform, and Professor Montgomery walks towards it with a parting remark.
+ - prompt: (...)
+ - leftcharacter: "It will all make sense in time, but for now, just beware old men with get-rich-quick schemes."
+ - prompt: (...)
+ - narrator: The train's passengers disembark in mass, and the professor is lost to your sight in the crowd.
+ - next: 21
+---
+id: 3c
+dialog:
+ - image:
+     leftcharacter: ProfessorMale
+ - rightcharacter: "I'm an acquaintance of your Uncle's. I'm a lumber man - I specialize in supplying the iron smelters with charcoal, you see. So naturally, I heard about your Uncle's recent bequeathal. I have a use for that forest - and I'm sure you have a use for an extra quarter million dollars, yes?"
+ - prompt: (...)
+ - narrator: The Professor shakes her head in disgust, and pulls out a golden stopwatch.
+ - prompt: (...)
+ - leftcharacter: "I don't mean to be coy, but this man is no friend of you or your Uncle's, and there is far more at stake than he lets on. You'll make far more than $1,500,000 if you take my offer and invest it - in coal, namely. The forest will remain largely untouched, other than a limited tract which will be mined - you have my word on this."
+ - prompt: (...)
+ - narrator: She flips her stopwatch open impatiently. The old man leers at you expectantly.
+ - choices:
+     3a: "Sold, to Moneybags!"
+     3b: "Sold, to Professor Montgomery!"
